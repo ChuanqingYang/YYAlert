@@ -5,16 +5,16 @@ import SwiftUI
 
 // Alert Config
 @available(iOS 17.0, *)
-struct AlertConfig {
-    var enableBackgroundBlur: Bool = true
-    var disableOutsideTap: Bool = false
+public struct AlertConfig {
+    public var enableBackgroundBlur: Bool = true
+    public var disableOutsideTap: Bool = false
     
-    var transitionType: TransitionType = .side
-    var slideEdge: Edge = .bottom
+    public var transitionType: TransitionType = .side
+    public var slideEdge: Edge = .bottom
     
     // 自动消失
-    var autoDismiss: Bool = false
-    var autoDismissInterval: TimeInterval = 1
+    public var autoDismiss: Bool = false
+    public var autoDismissInterval: TimeInterval = 1
     
     fileprivate var showAlert: Bool = false
     /// for dismiss the view with same animation and also can
@@ -22,7 +22,7 @@ struct AlertConfig {
     fileprivate var showView: Bool = false
     
     
-    init(enableBackgroundBlur: Bool = true,
+    public init(enableBackgroundBlur: Bool = true,
          disableOutsideTap: Bool = true,
          transitionType: TransitionType = .side ,
          slideEdge: Edge = .bottom,
@@ -37,17 +37,17 @@ struct AlertConfig {
         self.autoDismissInterval = autoDismissInterval
     }
     
-    enum TransitionType {
+    public enum TransitionType {
         case side
         case opacity
     }
     
-    mutating
+    public mutating
     func present() {
         showAlert = true
     }
     
-    mutating
+    public mutating
     func dismiss() {
         showAlert = false
     }
@@ -61,8 +61,8 @@ struct AlertConfig {
 ///
 @available(iOS 17.0, *)
 @Observable
-class AppDelegate: NSObject,UIApplicationDelegate {
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+public class AppDelegate: NSObject,UIApplicationDelegate {
+    public func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         
         let config = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
         /// Setting SceneDelegate Class
@@ -73,7 +73,7 @@ class AppDelegate: NSObject,UIApplicationDelegate {
 
 @available(iOS 17.0, *)
 @Observable
-class SceneDelegate: NSObject,UIWindowSceneDelegate {
+public class SceneDelegate: NSObject,UIWindowSceneDelegate {
     
     // Current Scene
     weak var windowScene: UIWindowScene?
@@ -84,7 +84,7 @@ class SceneDelegate: NSObject,UIWindowSceneDelegate {
     /// for saving muti-alerts
     var alerts:[UIView] = []
     
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         windowScene = scene as? UIWindowScene
         
         setupOverlayWindow()
@@ -240,7 +240,7 @@ fileprivate struct AlertModifier<AlertContent: View>: ViewModifier {
 @available(iOS 17.0, *)
 extension View {
     @ViewBuilder
-    func alert<Content: View>(alertConfig: Binding<AlertConfig>, @ViewBuilder content: @escaping () -> Content) -> some View {
+    public func alert<Content: View>(alertConfig: Binding<AlertConfig>, @ViewBuilder content: @escaping () -> Content) -> some View {
         self.modifier(AlertModifier(config: alertConfig, alertContent: content))
     }
 }
