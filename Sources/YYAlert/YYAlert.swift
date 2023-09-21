@@ -12,7 +12,7 @@ public struct AlertConfig {
     public var transitionType: TransitionType = .side
     public var slideEdge: Edge = .bottom
     
-    // 自动消失
+    // auto-dismiss
     public var autoDismiss: Bool = false
     public var autoDismissInterval: TimeInterval = 1
     
