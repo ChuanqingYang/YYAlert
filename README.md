@@ -3,17 +3,17 @@
 > Only Support iOS 17.0+
 
 - Step 1
-    Set Delegate In your ApplicationMain Strut
+    Set Delegate In your ApplicationMain Struct
     ```
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     ```
 - Step 2
-  Set AlertConfig with your prefered style in your `View`
+  Set AlertConfig with your preferred style in your `View`
   ```
   @State private var alert: AlertConfig = .init(disableOutsideTap: false,transitionType:.opacity)
   ```
 - Step 3
-  Use `.alert` modifier where you want and custom your own alert style.
+  Use the `.alert` modifier where you want and customize your own alert style.
   ```
             Button("Show Alert") {
                 /// Show Alert
